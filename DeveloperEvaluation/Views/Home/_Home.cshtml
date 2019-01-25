@@ -1,0 +1,34 @@
+﻿@model DeveloperEvaluation.Models.NumbersModel
+
+<!-- ko with: home -->
+<script>
+    var input = document.getElementById("input");
+
+    input.addEventListener("keyup", function (event) {
+        if (event.keyCode === 13) {
+            document.getElementById("sbmtCalculate").click();
+        }
+    });
+</script>
+<div class="jumbotron">
+    <h1>Developer Evaluation</h1>
+    <p class="lead">Calculate stuff!</p>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm())
+        {
+            <fieldset>
+                @*@Html.EditorFor(x => x.input)*@
+                <input id="input" name="input" type="text" value="@Model.input" />
+                <input type="submit" id="sbmtCalculate" value="Calculate" /><br />
+
+                @Html.Label("Mean:") @Model.mean<br />
+                @Html.Label("Median:") @Model.median <br />
+                @Html.Label("Mode:") @Model.modes<br />
+            </fieldset>
+        }
+    </div>
+</div>
+
+<!-- /ko -->
